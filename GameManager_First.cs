@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
 
     public void OnWin()
     {
-        Debug.Log("°ÔÀÓ Å¬¸®¾î!");
-        // TODO: UI, ´ÙÀ½ ½ºÅ×ÀÌÁö µî Ã³¸®
+        Debug.Log("ê²Œì„ í´ë¦¬ì–´!");
+        // TODO: UI, ë‹¤ìŒ ìŠ¤í…Œì´ì§€ ë“± ì²˜ë¦¬
     }
 
     public void OnLose()
     {
-        Debug.Log("°ÔÀÓ ¿À¹ö!");
-        // TODO: Àç½ÃÀÛ ¹öÆ° µî Ã³¸®
+        Debug.Log("ê²Œì„ ì˜¤ë²„!");
+        // TODO: ì¬ì‹œì‘ ë²„íŠ¼ ë“± ì²˜ë¦¬
     }
 }
