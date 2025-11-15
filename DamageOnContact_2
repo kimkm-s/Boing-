@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public class DamageOnContact : MonoBehaviour
+{
+    [SerializeField] private int damage = 10;
+    [SerializeField] private float radius = 0.5f; // �浹 üũ ����
+    [SerializeField] private LayerMask damageLayer; // ����/��ǥ�� ���̾� ����
+
+    private void FixedUpdate()
+    {
+        // ���� ��ġ �������� ������ radius �ȿ� �ִ� Collider�� ��������
+        Collider[] hits = Physics.OverlapSphere(transform.position, radius, damageLayer);
+        Debug.Log("Detected Colliders: " + hits.Length);
+
+        foreach (var hit in hits)
+        {
+            Debug.Log("Collider name: " + hit.name + ", Layer: " + hit.gameObject.layer);
+        }
+
+
+        foreach (var hit in hits)
+        {
+            HealthWithUI targetHealth = hit.GetComponent<HealthWithUI>();
+            if (targetHealth != null)
+            {
+                targetHealth.TakeDamage(damage);
+
+                // ����� �α�
+                Debug.Log($"Damage applied! Target: {hit.name}, Damage: {damage}, CurrentHealth: {targetHealth.CurrentHealth}");
+            }
+        }
+    }
+
+    // Scene �信�� ���� Ȯ�ο�
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+}
