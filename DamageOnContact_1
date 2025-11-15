@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class DamageOnContact : MonoBehaviour
+{
+    [SerializeField] private int damage = 10;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // ���Ϳ� �浹�� ���
+        if (other.CompareTag("Monster"))
+        {
+            HealthWithUI monsterHealth = other.GetComponent<HealthWithUI>();
+
+            if (monsterHealth != null)
+            {
+                monsterHealth.TakeDamage(damage);
+            }
+        }
+        if (other.CompareTag("Goal"))
+        {
+            HealthWithUI monsterHealth = other.GetComponent<HealthWithUI>();
+
+            if (monsterHealth != null)
+            {
+                monsterHealth.TakeDamage(damage);
+            }
+        }
+    }
+}
