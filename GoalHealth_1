@@ -1,0 +1,27 @@
+using UnityEngine;
+
+public class GoalHealth : MonoBehaviour
+{
+    public int maxHp = 200;
+    private int currentHp;
+
+    public bool IsDead => currentHp <= 0;
+
+    void Start()
+    {
+        currentHp = maxHp;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (IsDead) return;
+
+        currentHp -= amount;
+        Debug.Log("Goal HP: " + currentHp);
+
+        if (currentHp <= 0)
+        {
+            Debug.Log("Goal Destroyed!");
+        }
+    }
+}
