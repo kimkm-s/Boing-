@@ -1,0 +1,12 @@
+using UnityEngine;
+
+public class GoalHealth : MonoBehaviour
+{
+    public bool IsDead { get; private set; } = false;
+
+    public void OnDeath()
+    {
+        IsDead = true;
+        Debug.Log("Goal is Dead!");
+    }
+}
